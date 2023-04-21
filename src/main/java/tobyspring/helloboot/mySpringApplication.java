@@ -10,11 +10,11 @@ public class mySpringApplication {
         //스프링 컨테이너 만들기
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext(){
             @Override
-            protected void onRefresh(){
+            protected void onRefresh(){ //스프링 컨테이너 만들면서 초기화 하기
                 super.onRefresh();
 
                 ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
-                DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+                DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class); // 서블릿 컨테이너의 Front컨트롤러
                 dispatcherServlet.setApplicationContext(this);
 
                 WebServer webServer = serverFactory.getWebServer(servletContext -> {
