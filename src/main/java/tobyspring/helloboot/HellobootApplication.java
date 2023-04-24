@@ -1,14 +1,16 @@
 package tobyspring.helloboot;
 
 
+import org.springframework.boot.SpringApplication;
 import tobyspring.config.MySpringBootApplication;
 
-import static tobyspring.helloboot.mySpringApplication.run;
+
 
 @MySpringBootApplication
 public class HellobootApplication {
 	public static void main(String[] args){
-		run(HellobootApplication.class, args);
+//		run(HellobootApplication.class, args);
+		SpringApplication.run(HellobootApplication.class,args);
 	}
 
 }
