@@ -15,7 +15,7 @@ public class HelloApiTest {
     void helloApi(){
 
         TestRestTemplate rest = new TestRestTemplate();
-        ResponseEntity<String> res= rest.getForEntity("http://localhost:8080/hello?name={name}",String.class,"Spring"); //메시지 바디를 String 클래스로 바인딩
+        ResponseEntity<String> res= rest.getForEntity("http://localhost:9090/app/hello?name={name}",String.class,"Spring"); //메시지 바디를 String 클래스로 바인딩
         // 응답 검증
         // status 200
         Assertions.assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -27,7 +27,7 @@ public class HelloApiTest {
     @Test
     void failshelloApi(){
         TestRestTemplate rest = new TestRestTemplate();
-        ResponseEntity<String> res= rest.getForEntity("http://localhost:8080/hello?name=",String.class); //메시지 바디를 String 클래스로 바인딩
+        ResponseEntity<String> res= rest.getForEntity("http://localhost:9090/app/hello?name=",String.class); //메시지 바디를 String 클래스로 바인딩
         // 응답 검증
         // status 200
         Assertions.assertThat(res.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
