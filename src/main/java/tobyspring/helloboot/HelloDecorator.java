@@ -12,7 +12,13 @@ public class HelloDecorator implements HelloService{
         this.helloService = helloService;
     }
     @Override
-    public String sayHello(String name){ // Primary 애노테이션으로 인해 HelloDecorator가 먼저 Controller에게 빈으로 전달 됨. 따라서
+    public String sayHello(String name){ // Primary 애노테이션으로 인해 HelloDecorator 가 먼저 Controller 에게 빈으로 전달 됨. 따라서
         return "*" +helloService.sayHello(name)+"*";
+    }
+
+    /*default 함수인 countOf는 여기서 재정의 되었기 때문에  default 의 기능으로 가져오지 않음.*/
+    @Override
+    public int countOf(String name) {
+        return helloService.countOf(name);
     }
 }

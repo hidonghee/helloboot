@@ -29,12 +29,26 @@ public class HelloServiceTest {
 //    @Test
     @FastUnitTest
     void simpleHelloService(){
-        SimpleHelloService helloService = new SimpleHelloService();
+
+        SimpleHelloService helloService = new SimpleHelloService(helloRepositoryStub);
 
         String ret = helloService.sayHello("Test");
 
         Assertions.assertThat(ret).isEqualTo("Hello Test");
     }
+    /* 그냥 형식상 넣어줌. 구현하려는 코드에 SimpleHelloService 객체를 사용하고 싶어서 영향이 없는 임의 객체를 넣음
+     * 협력 오브젝트라고 불림*/
+    private static HelloRepository helloRepositoryStub = new HelloRepository() {
+        @Override
+        public Hello findHello(String name) {
+            return null;
+        }
+
+        @Override
+        public void increaseCount(String name) {
+
+        }
+    };
     @UnitTest
     void helloDecorator(){
         HelloDecorator decorator = new HelloDecorator(name -> name);
